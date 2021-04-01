@@ -68,9 +68,11 @@ const TrackBtn = () => (
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingVertical: 8,
-        backgroundColor: 'red',
-        width: 1,
+        padding: 5,
+        backgroundColor: 'white',
+        borderRadius: 50,
+        width: 40,
+        height: 30,
       }}
       onPress={() =>
         Analytics.trackEvent('Tracking button tapped', {
@@ -82,7 +84,7 @@ const TrackBtn = () => (
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
           flex: 2,
-          fontSize: 30,
+          fontSize: 18,
           fontWeight: '400',
           color: Colors.primary,
         }}>

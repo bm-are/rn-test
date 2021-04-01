@@ -9,6 +9,11 @@ on:
         default: 'Manual build Actions'
 
 jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world!
+        run: echo "Hello World!"
   build-ios-adhoc:
     runs-on: macOS-latest
     steps:

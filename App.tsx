@@ -57,41 +57,29 @@ const Section: React.FC<{
   );
 };
 
-const TrackBtn = () => (
-  <Section title="AppCenter tracking">
-    Track a:{' '}
-    <TouchableOpacity
-      accessibilityRole="button"
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 5,
-        backgroundColor: 'white',
-        borderRadius: 50,
-        width: 40,
-        height: 30,
-      }}
-      onPress={() =>
-        Analytics.trackEvent('Tracking button tapped', {
-          Category: 'Tap',
-          Value: 'Tap',
-        })
-      }>
-      <Text
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          flex: 2,
-          fontSize: 18,
-          fontWeight: '400',
-          color: Colors.primary,
-        }}>
-        Tap
-      </Text>
-    </TouchableOpacity>
-  </Section>
+const trackTap = (value: string, extra?: object) => () =>
+  Analytics.trackEvent('Tracking button tapped', {
+    Category: 'Tap',
+    Value: value,
+    ...extra,
+  });
+
+const TapBtn = () => (
+  <TouchableOpacity
+    accessibilityRole="button"
+    style={styles.btn}
+    onPress={trackTap('Tap')}>
+    <Text style={styles.btnText}>Tap</Text>
+  </TouchableOpacity>
+);
+
+const InteractBtn = () => (
+  <TouchableOpacity
+    accessibilityRole="button"
+    style={styles.btn}
+    onPress={trackTap('Interact', {Something: 'Else'})}>
+    <Text style={styles.btnText}>Interact</Text>
+  </TouchableOpacity>
 );
 
 const App = () => {
@@ -115,7 +103,9 @@ const App = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <TrackBtn />
+          <Section title="AppCenter tracking">
+            Track a: <TapBtn /> <InteractBtn />
+          </Section>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.
@@ -152,6 +142,25 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  btn: {
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 5,
+    backgroundColor: 'white',
+    borderRadius: 50,
+    width: 100,
+    height: 30,
+  },
+  btnText: {
+    flex: 2,
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.primary,
+    alignSelf: 'center',
+    textAlign: 'center',
   },
 });
 

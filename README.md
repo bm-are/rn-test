@@ -1,4 +1,4 @@
 # React Native test app
 For testing GH Actions or alternatives for building the mobile app
 
-[![Build iOS adhoc](https://github.com/bm-are/rn-test/actions/workflows/ios.yml/badge.svg?branch=master&event=workflow_run)](https://github.com/bm-are/rn-test/actions/workflows/ios.yml)
+![Get it on AppCenter](https://build.appcenter.ms/v0.1/apps/0439f265-ef28-46ba-8a7c-3705bbe33029/branches/master/badge)
